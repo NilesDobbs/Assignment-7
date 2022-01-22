@@ -17,9 +17,15 @@ public class CustomArrayList<T> implements CustomList<T> {
 		return true;
 	}
 	
+//	private Object[] growBackingObjectArray() {
+//		Object[] newItems = Arrays.copyOf(items, size * 2);
+//		items = newItems;
+//		return newItems;
+//	}
+	
 	@Override
 	public int getSize() {
-		
+		//Return the size of the counter
 		return itemCounter;
 	}
 	
@@ -36,7 +42,9 @@ public class CustomArrayList<T> implements CustomList<T> {
 			items = Arrays.copyOf(items, getSize() * 2);
 			LengthofArray = getSize() * 2;
 		}
-		
+			/* We need to add a for loop to shift one by one all elements from 
+			 	the end to right by 1 position while i > index */
+
 			for(int i = itemCounter; i > index; i--) {
 				items[i] = items[i-1];
 			}
@@ -50,7 +58,7 @@ public class CustomArrayList<T> implements CustomList<T> {
 		if(index > LengthofArray && index >= 0) {
 			throw new IndexOutOfBoundsException(index);
 		}
-		
+		/* Similar to as above. We need to add a for loop to items*/
 		for(int i = index; i < items.length-1; i++) {
 			items[i] = items[i + 1];
 		}
